@@ -1,7 +1,7 @@
-import {t} from './index'
+import { t } from './index';
 
-describe('Test',() => {
-    it('t',() => {
-        expect(t()).toBe('test')
-    })
-})
+describe('Test', () => {
+	it('t', () => {
+		expect(t()).toBe('test');
+	});
+});
