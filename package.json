@@ -20,7 +20,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-	"clean": "rimraf dist",
+    "clean": "rimraf dist",
     "test": "jest --watchAll",
     "build": "npm run clean && tsc",
     "dev": "tsc -w",
@@ -29,8 +29,12 @@
     "start": "node ./dist/index.js"
   },
   "bin": {
-    "lyi-cli": "./dist/index.js"
+    "lyi-ts": "./dist/tsdev/index.js"
   },
+  "files": [
+    "dist",
+    "assets"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luyi985/lyi-cli.git"

@@ -1,0 +1,35 @@
+{
+  "name": "lyi-socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luyi985/lyi-socket.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luyi985/lyi-socket/issues"
+  },
+  "homepage": "https://github.com/luyi985/lyi-socket#readme",
+  "dependencies": {
+    "@types/express": "^4.17.1",
+    "@types/ws": "^6.0.3",
+    "express": "^4.17.1",
+    "ws": "^7.1.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.2"
+  }
+}
