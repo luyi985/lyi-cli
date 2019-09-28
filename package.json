@@ -32,7 +32,7 @@
     "dev": "tsc -w",
     "publish:dev": "npm run build && npm link",
     "prepublish": "npm run build && npm version",
-    "publish": "npm publish .",
+    "publish": "npm publish . && git push --follow-tags",
     "p": "./publish.sh",
     "start": "node ./dist/index.js"
   },
