@@ -42,6 +42,7 @@ const mkNewPackageJsonScratch = async (toAdd: IPackageDataToAdd) => {
 		const newJson = await readJson(newJsonLocation);
 		if (!newJson) throw new Error('can not find newly inited package.json');
 		newJson.devDependencies = toAdd.devDependencies;
+		newJson.dependencies = toAdd.dependencies;
 		newJson.scripts = toAdd.scripts;
 		await write(newJsonLocation, JSON.stringify(newJson));
 		return newJson;
@@ -56,7 +57,9 @@ const mkNewPackageJsonExisting = async (toAdd: IPackageDataToAdd) => {
 		if (!newJson) throw new Error('fail to load existing package.json');
 		const scripts = { ...get(newJson, 'scripts', {}), ...toAdd.scripts };
 		const devDependencies = { ...get(newJson, 'devDependencies'), ...toAdd.devDependencies };
+		const dependencies = { ...get(newJson, 'dependencies'), ...toAdd.dependencies };
 		newJson.devDependencies = devDependencies;
+		newJson.dependencies = dependencies;
 		newJson.scripts = scripts;
 		await write(newJsonLocation, JSON.stringify(newJson));
 		return newJson;
@@ -69,18 +72,18 @@ const mkNewPackageJson = async () => {
 	try {
 		const deps = await readJson(`${TS_ASSET_DIR}/package.json`);
 		if (!deps) throw new Error('can not find predefined package.json');
-		const { devDependencies, scripts } = deps;
+		const { devDependencies, scripts, dependencies } = deps;
 		const hasExistingPackageFile = await checkAccess(`${config.toDir}/package.json`);
 		return hasExistingPackageFile
-			? await mkNewPackageJsonExisting({ devDependencies, scripts })
-			: await mkNewPackageJsonScratch({ devDependencies, scripts });
+			? await mkNewPackageJsonExisting({ devDependencies, dependencies, scripts })
+			: await mkNewPackageJsonScratch({ devDependencies, dependencies, scripts });
 	} catch (e) {
 		errorHandling(e);
 	}
 };
 
 const copyFiles = async () => {
-	const files = ['tsconfig.json', 'nodemon.json', 'jest.config.js', '.prettierrc', '.vscode', 'src'];
+	const files = ['tsconfig.json', 'nodemon.json', 'jest.config.js', '.prettierrc', '.vscode', 'src', '.env'];
 	try {
 		await Promise.all(files.map(f => copy(`${TS_ASSET_DIR}/${f}`, `${config.toDir}/${f}`)));
 	} catch (e) {
