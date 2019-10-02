@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon",
+    "dev": "nodemon --inspect src/index.ts",
     "build": "tsc"
   },
   "repository": {
