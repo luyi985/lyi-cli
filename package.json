@@ -7,7 +7,6 @@
     "@types/cli-spinner": "^0.2.0",
     "@types/commander": "^2.12.2",
     "@types/execa": "^2.0.0",
-    "@types/fs-extra": "^9.0.2",
     "@types/listr": "^0.14.2",
     "@types/lodash": "^4.14.162",
     "cli-spinner": "^0.2.10",
@@ -18,7 +17,9 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.2",
     "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.2",
     "jest": "^26.6.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.2",
@@ -28,7 +29,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "test": "jest --watchAll",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && ./node_modules/.bin/tsc",
     "dev": "tsc -w",
     "publish:dev": "npm run build && npm link",
     "versionup": "npm run build && npm version",

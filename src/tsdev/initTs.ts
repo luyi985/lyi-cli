@@ -85,7 +85,7 @@ const mkNewPackageJson = async () => {
 const copyFiles = async () => {
 	const files = ['tsconfig.json', 'nodemon.json', 'jest.config.js', '.prettierrc', '.vscode', 'src', '.env'];
 	try {
-		await Promise.all(files.map(f => copy(`${TS_ASSET_DIR}/${f}`, `${config.toDir}/${f}`)));
+		await Promise.all(files.map((f) => copy(`${TS_ASSET_DIR}/${f}`, `${config.toDir}/${f}`)));
 	} catch (e) {
 		errorHandling(e);
 	}
